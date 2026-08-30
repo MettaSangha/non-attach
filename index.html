@@ -3,131 +3,420 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="The Teaching of Non-Grasping — a reflection on suffering, impermanence, and freedom."
+  >
+
   <title>Non-Grasping — Dharma</title>
 
   <style>
+    /* =========================================
+       FOUNDATION
+    ========================================= */
+
+    :root {
+      --bg: #090908;
+      --bg-soft: #0e0e0c;
+
+      --text: #e9e6dd;
+      --text-soft: #c9c6bd;
+      --muted: #929189;
+
+      --gold: #b8a873;
+      --gold-soft: rgba(184, 168, 115, 0.55);
+
+      --line: rgba(232, 229, 220, 0.10);
+
+      --content-width: 720px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      min-height: 100vh;
-      background: #0b0b0a;
-      color: #e8e5dc;
-      font-family: Georgia, serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
+    html {
+      scroll-behavior: smooth;
     }
 
+    body {
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          rgba(184, 168, 115, 0.045),
+          transparent 38%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* =========================================
+       PAGE
+    ========================================= */
+
     main {
-      width: 100%;
-      max-width: 680px;
+      width: min(100% - 40px, var(--content-width));
+      margin: 0 auto;
+
+      padding:
+        clamp(70px, 12vh, 130px)
+        0
+        100px;
+
       text-align: center;
     }
 
+    /* =========================================
+       SYMBOL
+    ========================================= */
+
     .symbol {
+      display: inline-block;
+
+      margin-bottom: 32px;
+
+      color: var(--gold);
+
       font-size: 28px;
-      color: #b9aa7a;
-      margin-bottom: 40px;
-      opacity: .8;
+      line-height: 1;
+
+      opacity: 0.75;
+
+      animation: appear 1.4s ease both;
     }
+
+    /* =========================================
+       LABEL
+    ========================================= */
 
     .label {
-      font: 10px Arial, sans-serif;
-      letter-spacing: .4em;
+      margin-bottom: 24px;
+
+      color: var(--muted);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size: 10px;
+      font-weight: 500;
+
+      letter-spacing: 0.42em;
       text-transform: uppercase;
-      color: #88877f;
-      margin-bottom: 25px;
+
+      animation: appear 1.4s ease 0.1s both;
     }
+
+    /* =========================================
+       TITLE
+    ========================================= */
 
     h1 {
-      font-size: clamp(42px, 8vw, 72px);
+      margin-bottom: 38px;
+
+      color: var(--text);
+
+      font-size: clamp(44px, 8vw, 76px);
       font-weight: 400;
-      line-height: 1;
-      letter-spacing: -.03em;
-      margin-bottom: 35px;
+
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+
+      animation: rise 1.2s ease 0.15s both;
     }
+
+    /* =========================================
+       DIVIDER
+    ========================================= */
 
     .line {
-      width: 45px;
+      width: 48px;
       height: 1px;
-      background: #b9aa7a;
-      opacity: .5;
-      margin: 0 auto 35px;
+
+      margin: 0 auto 38px;
+
+      background: var(--gold-soft);
+
+      animation: expand 1s ease 0.5s both;
     }
+
+    /* =========================================
+       INTRO
+    ========================================= */
 
     .intro {
-      font-size: 20px;
-      line-height: 1.7;
-      color: #aaa9a1;
-      margin-bottom: 60px;
+      max-width: 590px;
+
+      margin: 0 auto 70px;
+
+      color: var(--text-soft);
+
+      font-size: clamp(18px, 2.5vw, 21px);
+      line-height: 1.75;
+
+      letter-spacing: -0.01em;
+
+      animation: rise 1.2s ease 0.25s both;
     }
 
+    /* =========================================
+       TEACHING
+    ========================================= */
+
     .teaching {
+      color: var(--text-soft);
+
       font-size: 18px;
       line-height: 2;
-      color: #d4d1c7;
+
+      animation: rise 1.2s ease 0.35s both;
     }
 
     .teaching p {
-      margin-bottom: 35px;
+      margin-bottom: 38px;
     }
 
     .teaching strong {
-      color: #e8e5dc;
+      display: block;
+
+      color: var(--text);
+
       font-weight: 400;
+
+      letter-spacing: -0.01em;
     }
 
+    /* =========================================
+       PRACTICE
+    ========================================= */
+
     .practice {
-      margin: 60px 0;
-      padding: 35px 0;
-      border-top: 1px solid #252522;
-      border-bottom: 1px solid #252522;
-      color: #aaa9a1;
+      position: relative;
+
+      margin: 65px 0;
+      padding: 42px 30px;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      color: var(--muted);
+
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .practice::before {
+      content: "·";
+
+      position: absolute;
+      top: -14px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      padding: 0 12px;
+
+      background: var(--bg);
+
+      color: var(--gold);
+
+      font-size: 20px;
     }
 
     .practice p {
-      margin: 12px 0;
+      margin: 0 0 10px;
     }
 
+    .practice p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================================
+       FREEDOM
+    ========================================= */
+
     .freedom {
-      font-size: 24px;
-      line-height: 1.6;
-      margin: 65px 0;
+      margin: 75px auto;
+
+      max-width: 650px;
+
+      color: var(--text);
+
+      font-size: clamp(21px, 3vw, 26px);
+      line-height: 1.65;
+
+      letter-spacing: -0.015em;
     }
 
     .freedom strong {
-      color: #b9aa7a;
+      color: var(--gold);
+
       font-weight: 400;
     }
 
+    /* =========================================
+       CLOSING
+    ========================================= */
+
     .closing {
-      color: #aaa9a1;
-      line-height: 2.1;
+      color: var(--muted);
+
       font-size: 16px;
+      line-height: 2.25;
+
+      letter-spacing: 0.01em;
     }
 
     .final {
-      margin-top: 35px;
-      color: #e8e5dc;
+      margin-top: 38px;
+
+      color: var(--text);
+
       font-size: 18px;
     }
 
+    /* =========================================
+       SUBTLE FOOTER
+    ========================================= */
+
+    .footer-mark {
+      width: 4px;
+      height: 4px;
+
+      margin: 55px auto 0;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+
+      opacity: 0.5;
+    }
+
+    /* =========================================
+       ANIMATION
+    ========================================= */
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 0.75;
+      }
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes expand {
+      from {
+        width: 0;
+        opacity: 0;
+      }
+
+      to {
+        width: 48px;
+        opacity: 1;
+      }
+    }
+
+    /* =========================================
+       ACCESSIBILITY
+    ========================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
     @media (max-width: 600px) {
+
+      main {
+        width: min(100% - 32px, var(--content-width));
+
+        padding-top: 65px;
+        padding-bottom: 75px;
+      }
+
+      .symbol {
+        margin-bottom: 28px;
+      }
+
+      .label {
+        margin-bottom: 20px;
+      }
+
       h1 {
         font-size: 44px;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .line {
+        margin-bottom: 32px;
       }
 
       .intro {
+        margin-bottom: 58px;
+
         font-size: 18px;
+        line-height: 1.7;
       }
 
       .teaching {
         font-size: 17px;
+        line-height: 1.9;
+      }
+
+      .practice {
+        margin: 55px 0;
+        padding: 36px 12px;
+
+        font-size: 15px;
+      }
+
+      .freedom {
+        margin: 60px auto;
+
+        font-size: 21px;
+      }
+
+      .closing {
+        font-size: 15px;
       }
     }
   </style>
@@ -135,71 +424,102 @@
 
 <body>
 
-<main>
+  <main>
 
-  <div class="symbol">☸</div>
+    <div class="symbol" aria-hidden="true">☸</div>
 
-  <div class="label">Dharma</div>
+    <div class="label">Dharma</div>
 
-  <h1>The Teaching<br>of Non-Grasping</h1>
+    <h1>
+      The Teaching<br>
+      of Non-Grasping
+    </h1>
 
-  <div class="line"></div>
+    <div class="line" aria-hidden="true"></div>
 
-  <p class="intro">
-    Suffering begins when we demand that reality
-    be different from what it is.
-  </p>
-
-  <section class="teaching">
-
-    <p>
-      Life is always changing.<br>
-      People change. Bodies change.<br>
-      Fortunes change. Thoughts arise and disappear.
+    <p class="intro">
+      Suffering begins when we demand that reality
+      be different from what it is.
     </p>
 
-    <p>
-      Even the sense of “me” is constantly changing.
-    </p>
+    <section class="teaching">
 
-    <p>
-      <strong>
-        The mind suffers when it tries to freeze
-        what cannot be frozen.
-      </strong>
-    </p>
+      <p>
+        Life is always changing.<br>
+        People change. Bodies change.<br>
+        Fortunes change. Thoughts arise and disappear.
+      </p>
 
-    <div class="practice">
-      <p>When something pleasant comes, enjoy it without clinging.</p>
-      <p>When something painful comes, experience it without resistance.</p>
-      <p>When uncertainty comes, allow uncertainty.</p>
-      <p>When action is required, act.</p>
-      <p>When nothing can be done, let go.</p>
-    </div>
+      <p>
+        Even the sense of “me” is constantly changing.
+      </p>
 
-    <div class="freedom">
-      Freedom is not getting everything you want.
-      <br><br>
-      <strong>
-        Freedom is no longer needing reality
-        to obey your preferences.
-      </strong>
-    </div>
+      <p>
+        <strong>
+          The mind suffers when it tries to freeze
+          what cannot be frozen.
+        </strong>
+      </p>
 
-    <div class="closing">
-      See clearly.<br>
-      Act wisely.<br>
-      Let go completely.
+      <div class="practice">
 
-      <div class="final">
-        That is the Dharma.
+        <p>
+          When something pleasant comes,
+          enjoy it without clinging.
+        </p>
+
+        <p>
+          When something painful comes,
+          experience it without resistance.
+        </p>
+
+        <p>
+          When uncertainty comes,
+          allow uncertainty.
+        </p>
+
+        <p>
+          When action is required,
+          act.
+        </p>
+
+        <p>
+          When nothing can be done,
+          let go.
+        </p>
+
       </div>
-    </div>
 
-  </section>
+      <div class="freedom">
 
-</main>
+        Freedom is not getting everything you want.
+
+        <br><br>
+
+        <strong>
+          Freedom is no longer needing reality
+          to obey your preferences.
+        </strong>
+
+      </div>
+
+      <div class="closing">
+
+        See clearly.<br>
+        Act wisely.<br>
+        Let go completely.
+
+        <div class="final">
+          That is the Dharma.
+        </div>
+
+        <div class="footer-mark" aria-hidden="true"></div>
+
+      </div>
+
+    </section>
+
+  </main>
 
 </body>
 </html>
-
